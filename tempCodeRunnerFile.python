@@ -1,0 +1,17 @@
+import pandas as pd
+
+cityDict = {"city":["Venice","Florence","Versailles"],"country":["Italy","Italy","France"]}
+capitolDict = {"capitol":["Rome","Paris"],"country":["Italy","France"]}
+
+citydf = pd.DataFrame(cityDict)
+capitoldf = pd.DataFrame(capitolDict)
+
+combineddf = pd.merge(citydf,capitoldf,how="inner",left_on="country",right_on="country")
+
+combineddf["fullName"] = combineddf["city"] + ", " + combineddf["country"]
+
+#concatdf = pd.concat([citydf["city"],capitoldf["capitol"]],ignore_index=True)
+
+print(combineddf)
+
+

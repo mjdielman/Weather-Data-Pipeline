@@ -10,7 +10,7 @@ from datetime import date
 #----------------------------------------------------------------------------------------------------------------------------------------
 #Add your SQL Server database parameters before running
 ServerName = "Your server name"
-DatbaseName = "Your database name"
+DatabaseName = "Your database name"
 #----------------------------------------------------------------------------------------------------------------------------------------
 
 class cityDictionary:
@@ -112,7 +112,7 @@ class TemperatureETL:
         self.APIResponse = APIResponse
 
     def SQLServerETL(self):
-        engine = create_engine("mssql+pyodbc://@" + ServerName + "/" + DatbaseName + "?trusted_connection=yes&driver=ODBC+Driver+17+for+SQL+Server")
+        engine = create_engine("mssql+pyodbc://@" + ServerName + "/" + DatabaseName + "?trusted_connection=yes&driver=ODBC+Driver+17+for+SQL+Server")
         self.APIResponse.to_sql("Temperature", con=engine, if_exists= "append", index=False)
 
 def main():
